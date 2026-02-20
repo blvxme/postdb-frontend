@@ -5,7 +5,7 @@ import { Toaster } from "sonner";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-gray-50">
         <Toaster position="top-right" theme="light" richColors />
         {children}
       </body>
