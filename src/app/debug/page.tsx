@@ -1,7 +1,7 @@
 "use client";
 
 import { Editor } from "@monaco-editor/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as monacoEditor from "monaco-editor";
 import { editor } from "monaco-editor";
 import { DebuggingRequestResult } from "@/types/debugging-request";
@@ -10,6 +10,7 @@ import { buildCodeMapping } from "@/lib/code-mapping";
 import { createVariableDecorations } from "@/lib/variable-decorations";
 import IEditorDecorationsCollection = editor.IEditorDecorationsCollection;
 import { createStateDecorations } from "@/lib/state-decorations";
+import { connect } from "@/api/debug";
 
 // Session storage keys
 const LAST_CODE_KEY = "lastCode";
@@ -67,10 +68,30 @@ export default function DebugPage() {
     decorationsRef.current = editor.createDecorationsCollection(decorations);
   };
 
+  const socketRef = useRef<WebSocket | null>(null);
+  const [socketError, setSocketError] = useState<string | null>(null);
+  useEffect(() => {
+    const socket = connect(
+      translationResult.uuid,
+      () => setSocketError(null),
+      () => setSocketError("WebSocket connection failed"),
+    );
+
+    socketRef.current = socket;
+
+    return () => {
+      socket.close();
+      socketRef.current = null;
+    };
+  }, [translationResult.uuid]);
+
   return (
     <div className="min-h-screen">
       <main className="p-4 gap-6 flex items-center justify-center">
         <div className="w-full max-w-5xl">
+          {socketError ? (
+            <p className="mb-2 text-sm text-red-400">{socketError}</p>
+          ) : null}
           <Editor
             height="50vh"
             width="100%"
