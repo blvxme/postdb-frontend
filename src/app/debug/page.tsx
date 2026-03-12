@@ -9,6 +9,7 @@ import IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
 import { buildCodeMapping } from "@/lib/code-mapping";
 import { createVariableDecorations } from "@/lib/variable-decorations";
 import IEditorDecorationsCollection = editor.IEditorDecorationsCollection;
+import { createStateDecorations } from "@/lib/state-decorations";
 
 // Session storage keys
 const LAST_CODE_KEY = "lastCode";
@@ -47,12 +48,22 @@ export default function DebugPage() {
     editorRef.current = editor;
     monacoRef.current = monaco;
 
-    const decorations = createVariableDecorations(
+    const variableDecorations = createVariableDecorations(
       codeMapping,
       translationResult.codeInfo.valueByInputVariable,
       translationResult.codeInfo.valueByOutputVariable,
     );
 
+    const stateDecorations = createStateDecorations(
+      codeMapping,
+      Object.fromEntries(
+        Object.entries(translationResult.codeInfo.statesByProcess).map(
+          ([p, s]) => [p, s[0] ?? ""],
+        ),
+      ),
+    );
+
+    const decorations = [...variableDecorations, ...stateDecorations];
     decorationsRef.current = editor.createDecorationsCollection(decorations);
   };
 

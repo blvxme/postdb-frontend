@@ -8,3 +8,17 @@
     margin-left: 8px;
     font-size: 13px;
 }
+
+.process-decoration {
+    background-color: rgba(128, 128, 128, 0.18);
+    color: #c5c5c5;
+    border-radius: 5px;
+    padding: 1px 6px;
+    margin-left: 8px;
+    font-size: 13px;
+}
+
+.state-decoration {
+    background-color: rgba(0, 200, 0, 0.75);
+    border-radius: 5px;
+}
