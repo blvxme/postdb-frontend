@@ -62,6 +62,7 @@ export default function DebugPage() {
           ([p, s]) => [p, s[0] ?? ""],
         ),
       ),
+      Object.keys(translationResult.codeInfo.statesByProcess)[0],
     );
 
     const decorations = [...variableDecorations, ...stateDecorations];
