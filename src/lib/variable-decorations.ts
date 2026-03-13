@@ -1,6 +1,6 @@
 import { CodeMapping } from "@/lib/code-mapping";
-import { StringToStringMap } from "@/types/debugging-request";
 import * as monacoEditor from "monaco-editor";
+import { StringToStringMap } from "@/types/common";
 
 export function createVariableDecorations(
   codeMapping: CodeMapping,

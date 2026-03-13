@@ -1,3 +1,5 @@
+import { StringToStringArrayMap, StringToStringMap } from "@/types/common";
+
 export interface DebuggingRequestPayload {
   postCode: string;
 }
@@ -7,9 +9,6 @@ export interface TranslatorOutput {
   stdout: string;
   stderr: string;
 }
-
-export type StringToStringMap = Record<string, string>;
-export type StringToStringArrayMap = Record<string, string[]>;
 
 export interface CodeInfo {
   statesByProcess: StringToStringArrayMap;
