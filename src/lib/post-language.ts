@@ -5,21 +5,35 @@ import type * as monacoEditor from "monaco-editor";
 const POST_LANGUAGE_ID = "poST";
 
 const KEYWORDS = [
+  "PROGRAM",
+  "END_PROGRAM",
+
   "PROCESS",
-  "STATE",
-  "IF",
-  "THEN",
-  "TRUE",
-  "FALSE",
-  "SET",
-  "NEXT",
-  "END_IF",
-  "RESET",
-  "TIMER",
-  "END_STATE",
   "END_PROCESS",
+
+  "STATE",
+  "END_STATE",
+
   "TIMEOUT",
   "END_TIMEOUT",
+  "RESET",
+  "TIMER",
+
+  "VAR_INPUT",
+  "VAR_OUTPUT",
+  "END_VAR",
+
+  "BOOL",
+  "TRUE",
+  "FALSE",
+
+  "IF",
+  "THEN",
+  "END_IF",
+
+  "SET",
+  "NEXT",
+  "START",
 ];
 
 let isLanguageRegistered = false;
