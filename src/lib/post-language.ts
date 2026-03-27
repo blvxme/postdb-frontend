@@ -26,6 +26,9 @@ const KEYWORDS = [
   "BOOL",
   "TRUE",
   "FALSE",
+  "NOT",
+
+  "REAL",
 
   "IF",
   "THEN",
