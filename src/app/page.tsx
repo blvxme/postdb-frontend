@@ -12,6 +12,7 @@ import TranslatorOutput, { OutputType } from "@/components/TranslatorOutput";
 import IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
 import { Editor } from "@monaco-editor/react";
 import { OTHER_APPS_URL } from "@/config";
+import { configurePostLanguage, POST_LANGUAGE_ID } from "@/lib/post-language";
 
 // Session storage keys
 const LAST_CODE_KEY = "lastCode";
@@ -122,6 +123,8 @@ export default function MainPage() {
             height="50vh"
             width="100%"
             theme="vs-dark"
+            beforeMount={configurePostLanguage}
+            language={POST_LANGUAGE_ID}
             options={{
               fontSize: 15,
               minimap: { enabled: false },

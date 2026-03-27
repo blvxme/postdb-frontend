@@ -18,6 +18,7 @@ import {
 } from "@/api/debug";
 import { DebugStateOutput } from "@/types/debug";
 import { StringToStringMap } from "@/types/common";
+import { configurePostLanguage, POST_LANGUAGE_ID } from "@/lib/post-language";
 
 // Session storage keys
 const LAST_CODE_KEY = "lastCode";
@@ -222,6 +223,8 @@ export default function DebugPage() {
               height="50vh"
               width="100%"
               theme="vs-dark"
+              beforeMount={configurePostLanguage}
+              language={POST_LANGUAGE_ID}
               options={{
                 fontSize: 15,
                 minimap: { enabled: false },
