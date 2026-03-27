@@ -20,7 +20,7 @@ export function createStateDecorations(
       ),
       options: {
         after: {
-          content: ` → ${state}`,
+          content: `${state}`,
           inlineClassName: "process-decoration",
         },
       },

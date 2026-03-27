@@ -22,7 +22,7 @@ export function createVariableDecorations(
         ),
         options: {
           after: {
-            content: ` → ${value}`,
+            content: `${value}`,
             inlineClassName: "variable-decoration",
           },
         },
@@ -43,7 +43,7 @@ export function createVariableDecorations(
         ),
         options: {
           after: {
-            content: ` → ${value}`,
+            content: `${value}`,
             inlineClassName: "variable-decoration",
           },
         },
